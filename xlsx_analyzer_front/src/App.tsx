@@ -1,10 +1,12 @@
 import React from "react";
+import Routes from "./router/Routes";
 import "./app.scss";
 
 const App: React.FC = () => {
     return (
-        <div>
-            <h1>Hello, React TypeScript App!</h1>
+        <div className="app">
+            <h1>ExcelAnt, your xls analyzer !</h1>
+            <Routes />
         </div>
     );
 };
