@@ -1,0 +1,12 @@
+.homepage {
+    width: 100%;
+    & h2 {
+        text-align: center;
+    }
+
+    .appCardsList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+}

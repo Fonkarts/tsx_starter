@@ -1,4 +1,3 @@
-import AppCard from "../../components/AppCard/AppCard";
 import AppCardsList from "./AppCardsList/AppCardsList";
 
 const Homepage = () => {
