@@ -6,17 +6,19 @@ const AppCardsList: React.FC = () => {
     const hasAppCardData = appCardData && appCardData.length;
 
     return (
-        hasAppCardData &&
-        appCardData.map((appCard: AppCardInterface) => {
-            return (
-                <AppCard
-                    key={`${appCard.name}Card`}
-                    name={appCard.name}
-                    description={appCard.description}
-                    url={appCard.url}
-                />
-            );
-        })
+        <section className="appCardsList">
+            {hasAppCardData &&
+                appCardData.map((appCard: AppCardInterface) => {
+                    return (
+                        <AppCard
+                            key={`${appCard.name}Card`}
+                            name={appCard.name}
+                            description={appCard.description}
+                            url={appCard.url}
+                        />
+                    );
+                })}
+        </section>
     );
 };
 
