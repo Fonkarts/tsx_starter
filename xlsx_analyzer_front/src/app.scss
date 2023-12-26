@@ -1,4 +1,5 @@
 @import "./style/colors.scss";
+@import "./style/mixins.scss";
 
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -85,3 +86,4 @@ button:focus-visible {
 @import "./pages/Homepage/Homepage";
 @import "./pages/Homepage/AppCard/AppCard";
 @import "./pages/PageNotFound/PageNotFound";
+@import "./pages/XlsVisualizer/XlsVisualizer";

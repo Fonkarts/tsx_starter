@@ -1,11 +1,8 @@
 .card {
+    @include flex-column-center;
     width: auto;
-    max-width: 20rem;
     margin: 0.5rem;
     padding: 1rem 0.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 1.8rem;
     background-color: $secondary-background;
     color: $primary-font;

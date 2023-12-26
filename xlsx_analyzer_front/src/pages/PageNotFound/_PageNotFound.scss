@@ -1,7 +1,8 @@
 .pageNotFound {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex-column-center;
     gap: 2rem;
     text-align: center;
+    .card {
+        max-width: 35rem;
+    }
 }
