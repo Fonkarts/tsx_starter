@@ -80,6 +80,8 @@ button:focus-visible {
 }
 
 @import "./components/Header/Header";
-@import "./components/AppCard/AppCard";
+@import "./components/Card/Card";
 
 @import "./pages/Homepage/Homepage";
+@import "./pages/Homepage/AppCard/AppCard";
+@import "./pages/PageNotFound/PageNotFound";

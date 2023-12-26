@@ -1,5 +1,5 @@
 import { appCardData } from "../../../assets/mocks/appCardsData";
-import AppCard from "../../../components/AppCard/AppCard";
+import AppCard from "../AppCard/AppCard";
 import { AppCardInterface } from "../../../types/AppCardTypes";
 
 const AppCardsList: React.FC = () => {

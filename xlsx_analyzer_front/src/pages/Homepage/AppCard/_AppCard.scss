@@ -1,0 +1,11 @@
+.card {
+    & h3,
+    &__description,
+    &__button {
+        margin: 0;
+    }
+
+    &__description {
+        text-align: center;
+    }
+}
