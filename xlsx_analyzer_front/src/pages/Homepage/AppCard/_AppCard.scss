@@ -1,9 +1,5 @@
 .card {
-    & h3,
-    &__description,
-    &__button {
-        margin: 0;
-    }
+    max-width: 20rem;
 
     &__description {
         text-align: center;
