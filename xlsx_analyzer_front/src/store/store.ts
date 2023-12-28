@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import AnalyzerSlice from "./slices/analyzerSlice";
+import visualizerSlice from "./slices/visualizerSlice";
 export const store = configureStore({
     reducer: {
-        analyzer: AnalyzerSlice,
+        analyzer: visualizerSlice,
     },
 });
 export type RootState = ReturnType<typeof store.getState>;

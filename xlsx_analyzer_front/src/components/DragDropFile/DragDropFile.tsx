@@ -1,12 +1,11 @@
 import { RefObject, createRef, useMemo, useState } from "react";
+import { sendFileToVisualize } from "../../store/slices/visualizerSlice";
+import { useAppDispatch } from "../../store/hook";
 
 const DragDropFile = () => {
+    const dispatch = useAppDispatch();
     const [file, setFile] = useState<any>();
     const inputFileRef: RefObject<HTMLInputElement> = createRef();
-
-    useMemo(() => {
-        console.log(file);
-    }, [file]);
 
     const hasFile = useMemo(() => {
         return (
@@ -34,10 +33,8 @@ const DragDropFile = () => {
     };
 
     const handleFileUpload = async () => {
-        const formData = new FormData();
         if (hasFile) {
-            formData.append("file", file);
-            // THUNK !!!
+            dispatch(sendFileToVisualize(file));
         } else {
             console.log("File has empty fields");
         }
@@ -51,12 +48,12 @@ const DragDropFile = () => {
                     onDragOver={(e) => e.preventDefault()}
                     onDrop={handleFileDrop}
                 >
-                    <p>Drop your file here</p>
+                    <p>Drop your file here or</p>
                     <button
                         className="dragDropFile__load-button"
                         onClick={handleLoadClick}
                     >
-                        Upload from your drive
+                        Upload it from your drive
                     </button>
                 </div>
                 <input
