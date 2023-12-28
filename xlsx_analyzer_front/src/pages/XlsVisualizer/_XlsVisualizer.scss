@@ -1,3 +1,13 @@
 .xlsVisualizer {
     @include flex-column-center;
+    &__button {
+        position: absolute;
+        top: 3rem;
+        left: 2rem;
+    }
+
+    .card {
+        width: calc(100% - 4rem);
+        max-width: calc(100% - 4rem);
+    }
 }
