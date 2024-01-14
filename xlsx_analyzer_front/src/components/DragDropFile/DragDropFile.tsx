@@ -18,11 +18,13 @@ const DragDropFile = () => {
     }, [file]);
 
     const handleFileChange = (e: any) => {
-        setFile(e.target.files[0]);
+        e.preventDefault();
+        setFile(e.currentTarget.files[0]);
     };
 
     const handleFileDrop = (e: any) => {
         e.preventDefault();
+
         setFile(e.dataTransfer.files[0]);
     };
 
@@ -34,9 +36,12 @@ const DragDropFile = () => {
 
     const handleFileUpload = async () => {
         if (hasFile) {
-            dispatch(sendFileToVisualize(file));
+            const formData = new FormData();
+            formData.append("file", file);
+            dispatch(sendFileToVisualize(formData));
         } else {
-            console.log("File has empty fields");
+            const message = "File has empty fields";
+            console.log({ file, message });
         }
     };
 
@@ -56,6 +61,11 @@ const DragDropFile = () => {
                         Upload it from your drive
                     </button>
                 </div>
+                {hasFile ? (
+                    <p>Current File : {file.name}</p>
+                ) : (
+                    <p>No file uploaded</p>
+                )}
                 <input
                     className="dragDropFile__input"
                     type="file"

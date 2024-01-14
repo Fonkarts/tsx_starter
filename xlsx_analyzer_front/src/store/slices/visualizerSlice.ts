@@ -4,14 +4,14 @@ import axios from "axios";
 
 export interface InitialStateInterface {
     data: Array<string>;
-    file: any;
+    extractedData: Array<any>;
     isLoading: boolean;
     error: string;
 }
 
 const initialState: InitialStateInterface = {
     data: [""],
-    file: {},
+    extractedData: [],
     isLoading: false,
     error: "",
 };
@@ -19,9 +19,17 @@ const initialState: InitialStateInterface = {
 export const sendFileToVisualize = createAsyncThunk(
     "file/sendVisualizerFile",
     async (file: any) => {
-        const endpoint = "http://localhost:5000";
-        const response = await axios.post(endpoint, file);
-        return response.data;
+        try {
+            const endpoint = "http://localhost:5000/xls_data";
+            const res = await axios.post(endpoint, file, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            return res.data;
+        } catch (error) {
+            throw error;
+        }
     }
 );
 
@@ -34,16 +42,18 @@ export const visualizerSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(sendFileToVisualize.pending, (state, action) => {
+        builder.addCase(sendFileToVisualize.pending, (state, _) => {
             state.isLoading = true;
-            console.log(action.payload);
         }),
             builder.addCase(sendFileToVisualize.fulfilled, (state, action) => {
-                state.isLoading = true;
-                console.log(action.payload);
+                const payload = action.payload.data;
+                state.extractedData = payload;
+                state.isLoading = false;
+
+                console.log(state.extractedData);
             }),
             builder.addCase(sendFileToVisualize.rejected, (state, action) => {
-                state.isLoading = true;
+                state.isLoading = false;
                 state.error = action.error.message!;
             });
     },

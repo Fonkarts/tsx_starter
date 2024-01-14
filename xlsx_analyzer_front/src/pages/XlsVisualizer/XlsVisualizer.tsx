@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Card from "../../components/Card/Card";
 import DragDropFile from "../../components/DragDropFile/DragDropFile";
+import FileDataGrid from "../../components/FileDataGrid/FileDataGrid";
 
 const XlsVisualizer: React.FC = () => {
     return (
@@ -17,6 +18,7 @@ const XlsVisualizer: React.FC = () => {
                     happen !
                 </p>
                 <DragDropFile />
+                <FileDataGrid />
             </Card>
         </section>
     );
