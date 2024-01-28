@@ -4,7 +4,8 @@ import axios from "axios";
 
 export interface InitialStateInterface {
     data: Array<string>;
-    extractedData: Array<any>;
+    extractedData: Array<any>; // INTERFACE TO DO
+    extractedDataKeys: Array<string>;
     isLoading: boolean;
     error: string;
 }
@@ -12,6 +13,7 @@ export interface InitialStateInterface {
 const initialState: InitialStateInterface = {
     data: [""],
     extractedData: [],
+    extractedDataKeys: [],
     isLoading: false,
     error: "",
 };
@@ -50,7 +52,9 @@ export const visualizerSlice = createSlice({
                 state.extractedData = payload;
                 state.isLoading = false;
 
-                console.log(state.extractedData);
+                const firstPayloadItem = payload[0];
+                const firstPayloadItemKeys = Object.keys(firstPayloadItem);
+                state.extractedDataKeys = firstPayloadItemKeys;
             }),
             builder.addCase(sendFileToVisualize.rejected, (state, action) => {
                 state.isLoading = false;
