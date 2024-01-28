@@ -1,10 +1,10 @@
 # XLSX Analyzer
 
-A simple react/python app to extract data from xlsx files and visualize it through datatables and graphs.
+A simple react/python app which purpose is to extract data from xlsx/csv files and visualize it through data tables and graphs.
 
 ## Features
 
--   Xlsx Files import
+-   CSV Files import
 -   DataFrame visualization
 -   Arrays and Graphs
 
@@ -20,6 +20,28 @@ Install xlsx analyzer with npm and pip
   pip install
 ```
 
+## Running App
+
+To run front-end
+
+```bash
+  npm run dev
+```
+
+To run back-end
+
+```bash
+  python app.py
+```
+
+## Running Build
+
+To run typescript compiler and vite build, run the following command
+
+```bash
+  npm run build
+```
+
 ## Running Tests
 
 To run unit tests, run the following command
@@ -28,7 +50,9 @@ To run unit tests, run the following command
   npm run test
 ```
 
-To run typescript compiler, vite build and unit tests, run the following command
+## Running Complete Check
+
+To run build and tests, run the following command
 
 ```bash
   npm run check
