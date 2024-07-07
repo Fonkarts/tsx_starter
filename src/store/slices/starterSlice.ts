@@ -3,27 +3,23 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export interface InitialStateInterface {
-    data: Array<string>;
-    extractedData: Array<any>; // INTERFACE TO DO
-    extractedDataKeys: Array<string>;
+    data: any;
     isLoading: boolean;
     error: string;
 }
 
 const initialState: InitialStateInterface = {
-    data: [""],
-    extractedData: [],
-    extractedDataKeys: [],
+    data: [{}],
     isLoading: false,
     error: "",
 };
 
-export const sendFileToVisualize = createAsyncThunk(
+export const starterThunk = createAsyncThunk(
     "file/sendVisualizerFile",
-    async (file: any) => {
+    async (data: any) => {
         try {
-            const endpoint = "http://localhost:5000/xls_data";
-            const res = await axios.post(endpoint, file, {
+            const endpoint = "http://localhost:5000/endpoint";
+            const res = await axios.post(endpoint, data, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -35,8 +31,8 @@ export const sendFileToVisualize = createAsyncThunk(
     }
 );
 
-export const visualizerSlice = createSlice({
-    name: "analyzer",
+export const starterSlice = createSlice({
+    name: "starter",
     initialState,
     reducers: {
         setData: (state, action: PayloadAction<string>) => {
@@ -44,24 +40,20 @@ export const visualizerSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(sendFileToVisualize.pending, (state, _) => {
+        builder.addCase(starterThunk.pending, (state, _) => {
             state.isLoading = true;
         }),
-            builder.addCase(sendFileToVisualize.fulfilled, (state, action) => {
+            builder.addCase(starterThunk.fulfilled, (state, action) => {
                 const payload = action.payload.data;
-                state.extractedData = payload;
+                state.data = payload;
                 state.isLoading = false;
-
-                const firstPayloadItem = payload[0];
-                const firstPayloadItemKeys = Object.keys(firstPayloadItem);
-                state.extractedDataKeys = firstPayloadItemKeys;
             }),
-            builder.addCase(sendFileToVisualize.rejected, (state, action) => {
+            builder.addCase(starterThunk.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.error.message!;
             });
     },
 });
 
-export const { setData } = visualizerSlice.actions;
-export default visualizerSlice.reducer;
+export const { setData } = starterSlice.actions;
+export default starterSlice.reducer;

@@ -1,8 +1,8 @@
 const Header: React.FC = () => {
     return (
         <header className="header">
-            <img src="/small_xlant.png" alt="xlant app logo" />
-            <h1>XLAnt, your xls files analyzer !</h1>
+            <img src="/vite.svg" alt="starter app logo" />
+            <h1>Your App Title !</h1>
         </header>
     );
 };

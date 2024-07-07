@@ -22,7 +22,7 @@
 }
 
 body {
-    width: 100vw;
+    max-width: 100vw;
     min-height: 100vh;
     font-size: 16px;
 }
@@ -80,24 +80,8 @@ button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
 }
 
-// @media (prefers-color-scheme: light) {
-//     :root {
-//         color: #213547;
-//         background-color: #ffffff;
-//     }
-//     a:hover {
-//         color: #747bff;
-//     }
-//     button {
-//         background-color: #f9f9f9;
-//     }
-// }
-
+// COMPONENTS
 @import "./components/Header/Header";
-@import "./components/Card/Card";
-@import "./components/DragDropFile/DragDropFile";
 
+// PAGES
 @import "./pages/Homepage/Homepage";
-@import "./pages/Homepage/AppCard/AppCard";
-@import "./pages/PageNotFound/PageNotFound";
-@import "./pages/XlsVisualizer/XlsVisualizer";
