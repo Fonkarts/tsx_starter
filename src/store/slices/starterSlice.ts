@@ -15,7 +15,7 @@ const initialState: InitialStateInterface = {
 };
 
 export const starterThunk = createAsyncThunk(
-    "file/sendVisualizerFile",
+    "starter/starterThunk",
     async (data: any) => {
         try {
             const endpoint = "http://localhost:5000/endpoint";
@@ -32,7 +32,7 @@ export const starterThunk = createAsyncThunk(
 );
 
 export const starterSlice = createSlice({
-    name: "starter",
+    name: "starterSlice",
     initialState,
     reducers: {
         setData: (state, action: PayloadAction<string>) => {
